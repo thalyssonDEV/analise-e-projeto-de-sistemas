@@ -1,0 +1,37 @@
+@startuml
+
+class Produto {
+  - nome: string
+  - preco: number
+  - codigo: string
+}
+
+class Cliente {
+  - nome: string
+  - email: string
+  - telefone: string
+}
+
+class Venda {
+  - total: number
+  - data: datetime
+  - statusPagamento: bool
+  
+  + adicionarItem(item: ItemVenda)
+  + calcularTotal()
+  + listarItens()
+  + marcarPagamento()
+}
+
+class ItemVenda {
+  - quantidade: int
+  - produto: Produto
+  
+  + calcularPrecoTotal(): number
+}
+
+Cliente "1" --> "*" Venda 
+Venda --> "*" ItemVenda   
+ItemVenda --> Produto   
+
+@enduml
