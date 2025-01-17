@@ -1,0 +1,28 @@
+@startuml
+
+class Funcionario {
+  - nome: string
+  - cpf: string
+  - cargo: string
+  - salario: float
+  
+  + exibir_informacoes()
+}
+
+class Gerente {
+  - departamento: string
+}
+
+class Rh {
+  - funcionarios: list[Funcionario]
+  
+  + adicionarFuncionario(funcionarios: Funcionario)
+  + removerFuncionario(cpf: string)
+  + listarFuncionarios()
+  + buscarFuncionario(cpf: string)
+}
+
+Rh --> Funcionario
+Funcionario <|-- Gerente
+
+@enduml
