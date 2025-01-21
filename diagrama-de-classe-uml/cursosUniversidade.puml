@@ -1,0 +1,37 @@
+@startuml
+
+class Universidade {
+  - nome: string
+  - endereco: string
+}
+
+class Curso {
+  nome: string
+  codigo: string
+}
+
+class Professor {
+  - nome: string
+  - matricula: string
+}
+
+class Disciplina {
+  - nome: string
+  - cargaHoraria: number
+}
+
+class Aluno {
+  - nome: string
+  - matricula: string
+  - dataNascimento: datetime
+  
+  + matricularEmCurso(curso: Curso)
+  + matricularEmDisciplina(disciplina: Disciplina)
+}
+
+Universidade --> Curso
+Curso --> Professor
+Curso --> Disciplina
+Curso --> Aluno
+
+@enduml
