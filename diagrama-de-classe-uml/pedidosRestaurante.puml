@@ -1,0 +1,53 @@
+@startuml
+
+class Restaurante {
+  - nome: string
+  - endereco: string
+}
+
+class ItemCardapio {
+  - nome: string
+  - preco: number
+  - ddescricao: string
+}
+
+class Cardapio {
+  - itens: List[ItemCardapio]
+  
+  + adicionarItem(item: ItemCardapio)
+  + listarItens()
+}
+
+class Pagamento {
+  - forma: string
+  - valor: number
+}
+
+class Cliente {
+  nome: string
+  telefone: string
+  
+  + realizarPedido(itens: List[ItemCardapio])
+}
+
+class Pedido {
+  - dataHora: datetime
+  - valorTotal: number
+  
+  + adicionarItem(item: PedidoItem)
+  + calcularTotal()
+  
+}
+
+class PedidoItem {
+  - quantidade: number
+}
+
+Restaurante --> Cardapio
+Cardapio --> ItemCardapio
+Cliente --> Pedido
+Pedido --> Pagamento
+Pedido --> PedidoItem
+
+
+@enduml
